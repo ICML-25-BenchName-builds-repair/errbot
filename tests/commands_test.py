@@ -224,7 +224,7 @@ def test_encoding_preservation(testbot):
 
 def test_webserver_webhook_test(testbot):
     testbot.push_message(
-        "!plugin config Webserver {'HOST': 'localhost', 'PORT': 3141, 'SSL':  None}"
+        "!plugin config Webserver {'HOST': 'localhost', 'PORT': 3141, 'SSL': None}"
     )
     assert "Plugin configuration done." in testbot.pop_message()
     testbot.assertInCommand("!webhook test /echo toto", "Status code: 200")
