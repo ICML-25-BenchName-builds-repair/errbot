@@ -3,11 +3,7 @@
 
 name: Python package
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+on: push
 
 permissions:
   contents: read
@@ -16,10 +12,20 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+
+    services:
+
+      pypi_wayback:
+
+        image: ghcr.io/waleko/pypi-wayback
+
+        ports:
+
+        - 8629:8080
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.8, 3.9, "3.10"]
+        python-version: [3.8, 3.9, '3.10']
 
     steps:
     - uses: actions/checkout@v4.1.1
@@ -64,3 +70,7 @@ jobs:
       if: ${{ matrix.python-version == '3.9' }}
       run: |
         tox -e docs
+
+env:
+  PIP_INDEX_URL: http://localhost:8629/2023-10-30
+  UV_INDEX_URL: http://localhost:8629/2023-10-30
