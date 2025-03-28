@@ -27,7 +27,8 @@ class VersionChecker(BotPlugin):
             "test",
             "Dummy",
             "text",
-        ):  # skip in all test confs.
+        ):
+            # skip in all test confs.
             self.activated = True
             self.version_check()  # once at startup anyway
             self.start_poller(3600 * 24, self.version_check)  # once every 24H
