@@ -179,7 +179,9 @@ def test_broken_plugin(testbot):
 
 def test_backup(testbot):
     bot = testbot.bot  # used while restoring
-    bot.push_message("!repos install https://github.com/errbotio/err-helloworld.git")
+    bot.push_message(
+        "!repos install https://github.com/errbotio/err-helloworld.git"
+    )
     assert "Installing" in testbot.pop_message()
     assert "err-helloworld" in testbot.pop_message(timeout=60)
     assert "reload" in testbot.pop_message()
