@@ -71,7 +71,7 @@ def test_config_cycle(testbot):
     assert "Current configuration" not in m
 
     testbot.assertInCommand(
-        "!plugin config Webserver {'HOST': 'localhost', 'PORT': 3141, 'SSL':  None}",
+        "!plugin config Webserver {'HOST': 'localhost', 'PORT': 3141, 'SSL': None}",
         "Plugin configuration done.",
     )
 
